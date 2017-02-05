@@ -1,16 +1,10 @@
-def main():
-    with open('practice.in', 'r') as src:
-        with open('practice.out', 'w') as dest:
-            solve(src, dest)
-
-
-def solve(src, dest):
-    t = int(src.readline())
+def solve():
+    t = int(raw_input())
     for i in xrange(1, t + 1):
-        case_line = src.readline()
+        case_line = raw_input()
         result = solve_case(case_line)
 
-        dest.write('Case #{}: {}\n'.format(i, result))
+        print 'Case #{}: {}'.format(i, result)
 
 
 def solve_case(line):
@@ -31,4 +25,4 @@ def solve_case(line):
 
     return friends
 
-main()
+solve()

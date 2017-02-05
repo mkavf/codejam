@@ -1,24 +1,13 @@
-import time
-
-
-def main():
-    with open('practice.in', 'r') as src:
-        with open('practice.out', 'w') as dest:
-            start_time = time.time()
-            solve(src, dest)
-            print("%s ms" % ((time.time() - start_time) * 1000))
-
-
-def solve(src, dest):
-    t = int(src.readline())
+def solve():
+    t = int(raw_input())
     for i in xrange(1, t + 1):
-        lx_line = src.readline()
+        lx_line = raw_input()
         lx = map(int, lx_line.split(" "))
 
-        seq = src.readline().strip()
+        seq = raw_input().strip()
         result = solve_case(lx[0], lx[1], seq)
 
-        dest.write('Case #{}: {}\n'.format(i, result))
+        print 'Case #{}: {}'.format(i, result)
 
 TABLE = {
     '1': {'1': '1', 'i': 'i',  'j': 'j',  'k': 'k'},
@@ -96,4 +85,4 @@ def multiply(x, y):
     return z
 
 
-main()
+solve()

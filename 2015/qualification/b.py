@@ -1,18 +1,12 @@
-def main():
-    with open('practice.in', 'r') as src:
-        with open('practice.out', 'w') as dest:
-            solve(src, dest)
-
-
-def solve(src, dest):
-    t = int(src.readline())
+def solve():
+    t = int(raw_input())
     for i in xrange(1, t + 1):
-        src.readline()  # read of d
-        case_line = src.readline()
+        raw_input()  # read of d
+        case_line = raw_input()
         plates = map(int, case_line.split(" "))
         result = solve_case(plates)
 
-        dest.write('Case #{}: {}\n'.format(i, result))
+        print 'Case #{}: {}'.format(i, result)
 
 
 def solve_case(plates):
@@ -29,4 +23,4 @@ def solve_case(plates):
 
     return current_result
 
-main()
+solve()

@@ -1,23 +1,12 @@
-import time
-
-
-def main():
-    with open('practice.in', 'r') as src:
-        with open('practice.out', 'w') as dest:
-            start_time = time.time()
-            solve(src, dest)
-            print("%s ms" % ((time.time() - start_time) * 1000))
-
-
-def solve(src, dest):
-    t = int(src.readline())
+def solve():
+    t = int(raw_input())
     for i in xrange(1, t + 1):
-        line = src.readline()
+        line = raw_input()
         xrc = map(int, line.split(" "))
 
         result = solve_case(xrc[0], xrc[1], xrc[2])
 
-        dest.write('Case #{}: {}\n'.format(i, result))
+        print 'Case #{}: {}'.format(i, result)
 
 
 def solve_case(x, r, c):
@@ -39,4 +28,4 @@ def solve_case(x, r, c):
 
     return 'GABRIEL'
 
-main()
+solve()
