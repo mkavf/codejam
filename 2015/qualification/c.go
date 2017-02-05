@@ -1,30 +1,21 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"bufio"
-	"strings"
 	"strconv"
-	"time"
+	"strings"
 )
 
 func main() {
-	src, _ := os.Open("practice.in") //put absolute path here
-	defer src.Close()
-
-	dest, _ := os.Create("practice.out") //put absolute path here
-	defer dest.Close()
-
-	start := time.Now()
-	solve(bufio.NewScanner(src), bufio.NewWriter(dest))
-	fmt.Println(time.Since(start))
+	solve(bufio.NewScanner(os.Stdin))
 }
 
-func solve(src *bufio.Scanner, dest *bufio.Writer) {
+func solve(src *bufio.Scanner) {
 	src.Scan()
 	t, _ := strconv.Atoi(src.Text())
-	for i := 1; i < t + 1; i++ {
+	for i := 1; i < t+1; i++ {
 		src.Scan()
 		lxLine := src.Text()
 		lx := strings.Split(lxLine, " ")
@@ -36,10 +27,8 @@ func solve(src *bufio.Scanner, dest *bufio.Writer) {
 		seq := strings.TrimSpace(src.Text())
 		result := solveCase(l, x, seq)
 
-		dest.WriteString(fmt.Sprintf("Case #%d: %s\n", i, result))
+		fmt.Println(fmt.Sprintf("Case #%d: %s", i, result))
 	}
-	dest.Flush()
-
 }
 
 var TABLE = map[string]map[string]string{
@@ -73,7 +62,7 @@ func shortestIJ(l int, x int, seq string) bool {
 
 func reduceTo(start int, char string, l int, x int, seq string) (int, bool) {
 	idx := start
-	a := string(seq[start % l])
+	a := string(seq[start%l])
 	length := l * x
 
 	for idx < length {
@@ -81,7 +70,7 @@ func reduceTo(start int, char string, l int, x int, seq string) (int, bool) {
 		if a == char {
 			return idx, true
 		}
-		a = multiply(a, string(seq[idx % l]))
+		a = multiply(a, string(seq[idx%l]))
 	}
 	return idx, false
 }
@@ -103,7 +92,7 @@ func multiplyAll(x int, seq string) string {
 		return multiply(a, a)
 	} else if x == 3 {
 		return multiply(multiply(a, a), a)
-	} else{
+	} else {
 		panic("Should never get here.")
 	}
 }
