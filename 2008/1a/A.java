@@ -26,16 +26,13 @@ public class A {
     }
 
     private long solveCase(List<Long> a, List<Long> b){
-        Queue<Long> aQ = new PriorityQueue<>();
-        aQ.addAll(a);
-
-        Queue<Long> bQ = new PriorityQueue<>(Comparator.reverseOrder());
-        bQ.addAll(b);
+        a.sort(Comparator.naturalOrder());
+        b.sort(Comparator.reverseOrder());
 
         long sum = 0;
 
-        while (aQ.size() > 0) {
-            sum += aQ.poll() * bQ.poll();
+        for (int i = 0; i < a.size(); i++) {
+            sum += a.get(i) * b.get(i);
         }
 
         return sum;
