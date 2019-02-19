@@ -23,4 +23,5 @@ def solve_case(plates):
 
     return current_result
 
+
 solve()

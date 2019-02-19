@@ -25,4 +25,5 @@ def solve_case(line):
 
     return friends
 
+
 solve()

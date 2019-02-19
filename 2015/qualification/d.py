@@ -28,4 +28,5 @@ def solve_case(x, r, c):
 
     return 'GABRIEL'
 
+
 solve()
